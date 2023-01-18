@@ -149,15 +149,23 @@ public class Game {
      * @return String indicating the outcome of the game: "X wins" or "O wins" or "Tie" or "None"
      */
     public String checkGameWinner(char [][]grid){
-        String result;
-        if(grid[0][0] == 'x' && grid[0][1] == 'x' && grid[0][2] == 'x'){
-             result = "X wins";
-        } else {
-             result = "None";
-        }
-            //Student code goes here ...
-            return result;
+        String result = "None";
+        //loop through cells and try to find winner
+            for(int i=0;i<3;i++){
+                //check vertically
+                if(grid[i][0] == grid[i][1] && grid[i][0] == grid[i][2] && grid[i][0] != '-'){
+                    result = grid[i][0] + " wins";
+                //check horizontaly
+                } else if (grid[0][i] == grid[1][i] && grid[0][i] == grid[2][i] && grid[0][i] != '-') {
+                    result = grid[0][i] + " wins";
+                }
+            }
+            //check diagonally without loop
+            if((grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] && grid[0][0] != '-') || (grid[2][0] == grid[1][1] && grid[2][0] == grid[0][2] && grid[2][0] != '-')){
+                result = grid[1][1] + " wins";
+            }
 
+        return result;
     }
 
     /**
