@@ -150,21 +150,34 @@ public class Game {
      */
     public String checkGameWinner(char [][]grid){
         String result = "None";
+        //set number of empty fields
+        int emptyCell = 0;
         //loop through cells and try to find winner
             for(int i=0;i<3;i++){
                 //check vertically
                 if(grid[i][0] == grid[i][1] && grid[i][0] == grid[i][2] && grid[i][0] != '-'){
-                    result = grid[i][0] + " wins";
+                    String winner = "" + grid[i][0];
+                    result = winner.toUpperCase() + " wins";
                 //check horizontaly
                 } else if (grid[0][i] == grid[1][i] && grid[0][i] == grid[2][i] && grid[0][i] != '-') {
-                    result = grid[0][i] + " wins";
+                    String winner = "" + grid[0][i];
+                    result = winner.toUpperCase() + " wins";
                 }
+                //check diagonally
+                else if((grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] && grid[0][0] != '-') || (grid[2][0] == grid[1][1] && grid[2][0] == grid[0][2] && grid[2][0] != '-')){
+                    String winner = "" + grid[1][1];
+                    result = winner.toUpperCase() + " wins";
+                } else {
+                //if there is no winner loop through all cells and count empty ones
+                    for(int j=0;j<3;j++) {
+                        if(grid[j][i] == '-'){emptyCell++;}
+                    }
+                    }
+                }
+            //if there are no empty cells and there is no winner it is a tie
+            if(emptyCell == 0 && result == "None"){
+                result = "Tie";
             }
-            //check diagonally without loop
-            if((grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] && grid[0][0] != '-') || (grid[2][0] == grid[1][1] && grid[2][0] == grid[0][2] && grid[2][0] != '-')){
-                result = grid[1][1] + " wins";
-            }
-
         return result;
     }
 
