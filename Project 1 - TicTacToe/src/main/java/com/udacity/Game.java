@@ -149,9 +149,15 @@ public class Game {
      * @return String indicating the outcome of the game: "X wins" or "O wins" or "Tie" or "None"
      */
     public String checkGameWinner(char [][]grid){
-        String result = "None";
-        //Student code goes here ...
-        return result;
+        String result;
+        if(grid[0][0] == 'x' && grid[0][1] == 'x' && grid[0][2] == 'x'){
+             result = "X wins";
+        } else {
+             result = "None";
+        }
+            //Student code goes here ...
+            return result;
+
     }
 
     /**
