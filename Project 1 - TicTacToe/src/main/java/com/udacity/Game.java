@@ -168,13 +168,13 @@ public class Game {
                     String winner = "" + grid[1][1];
                     result = winner.toUpperCase() + " wins";
                 } else {
-                //if there is no winner loop through all cells and count empty ones
+                //if there is no winner, loop through all cells and count empty ones
                     for(int j=0;j<3;j++) {
                         if(grid[j][i] == '-'){emptyCell++;}
                     }
-                    }
                 }
-            //if there are no empty cells and there is no winner it is a tie
+            }
+            //if there are no empty cells and there is no winner, it is a tie
             if(emptyCell == 0 && result == "None"){
                 result = "Tie";
             }
